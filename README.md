@@ -7,4 +7,5 @@ This is an NAT tool implemented by Java
 * data transmission encryption on the client server
 * realize simultaneous use of multiple clients
 * multiple ports at the same time
-
+* java netty implement
+* h2 database
