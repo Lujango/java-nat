@@ -1,0 +1,18 @@
+{
+  "server": {
+    "bindHost": 8080,
+    "token": "123456"
+  },
+  "clients": [
+    {
+      "clientName": "home_pc",
+      "serverWorkers": [
+        {
+          "serverPort": "8081",
+          "localHost": "127.0.0.1",
+          "localPort": "3389"
+        }
+      ]
+    }
+  ]
+}
