@@ -1,7 +1,7 @@
 package com.javanet.cmd.handler;
 
 /**
- * cmd
+ * cmd encoder
  */
 public class CmdEncoder {
 }
