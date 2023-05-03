@@ -4,6 +4,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class CodeUtil {
+
     public static byte[] md5(byte[] src) {
         try {
             MessageDigest md = MessageDigest.getInstance("md5");
@@ -23,4 +24,5 @@ public class CodeUtil {
             throw new RuntimeException(e);
         }
     }
+
 }
