@@ -21,7 +21,7 @@ public  interface Cmd {
 
 
     /*
-     * 将当前对象序列化到Bytebuf中
+     * Serialize the current object into Bytebuf
      * */
     void encoderTo(ByteBuf buf);
 

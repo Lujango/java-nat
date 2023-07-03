@@ -56,7 +56,7 @@ public class AppClient {
                 .remoteAddress(config.getServerIp(), config.getServerPort())
                 .option(ChannelOption.CONNECT_TIMEOUT_MILLIS, 4000)
                 .option(ChannelOption.TCP_NODELAY, true)
-                //将配置类存入channel
+                // config save to channel
                 .attr(key, config)
                 .handler(new ChannelInitializer<Channel>() {
                              @Override
