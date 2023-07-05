@@ -48,6 +48,6 @@ public class LoginFailCmd  implements Cmd {
 
     @Override
     public String toString() {
-        return "登录失败:[clientName:+" + clientName + ",+FailMsg:" + failMsg + "]";
+        return "login fail :[clientName:+" + clientName + ",+FailMsg:" + failMsg + "]";
     }
 }
