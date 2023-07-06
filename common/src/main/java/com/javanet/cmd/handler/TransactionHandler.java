@@ -6,7 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * 转换数据用的handler，将读到的数据传入out中
+ * The handler used for converting data, passing the read data into the out
  */
 public class TransactionHandler extends ChannelInboundHandlerAdapter {
 
@@ -14,7 +14,7 @@ public class TransactionHandler extends ChannelInboundHandlerAdapter {
     private boolean autoRead;
     private Channel out;
 
-    //输出管道，是否自动读取
+    //out channel， is auto read
     public TransactionHandler(Channel out, boolean autoRead) {
         this.out = out;
         this.autoRead = autoRead;
@@ -27,13 +27,13 @@ public class TransactionHandler extends ChannelInboundHandlerAdapter {
             if (out.isActive()) {
                 ChannelFuture f = out.writeAndFlush(msg);
                 f.addListener(ChannelFutureListener.CLOSE_ON_FAILURE);
-                //非自动读则手动读取一次
+                //hand read
                 if (!autoRead) {
                     f.addListener(future -> {
                         if (future.isSuccess()) {
                             ctx.read();
                         } else {
-                            log.error("透传handler写入失败in:" + ctx + ",to:" + out, future.cause());
+                            log.error("handler write fail in:" + ctx + ",to:" + out, future.cause());
                             ctx.close();
                         }
                     });
@@ -50,10 +50,10 @@ public class TransactionHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
         if (out.isActive()) {
-            log.debug("[{}]被关闭了，所以同步关闭另一侧", ctx.name());
+            log.debug("[{}]closed， close other", ctx.name());
             out.flush().close();
         } else {
-            log.debug("[{}]被关闭了，另一侧已经被关闭了，不处理", ctx.name());
+            log.debug("[{}]all closed，no handle", ctx.name());
         }
         super.channelInactive(ctx);
     }
