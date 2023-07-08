@@ -9,6 +9,6 @@ public class AuthenticationException extends RuntimeException {
     public static AuthenticationException INSTANCE = new AuthenticationException();
 
     public AuthenticationException() {
-        super("密码不对");
+        super("password no ok");
     }
 }
