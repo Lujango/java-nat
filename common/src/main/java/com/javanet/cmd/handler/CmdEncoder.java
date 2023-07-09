@@ -10,7 +10,7 @@ import io.netty.handler.codec.MessageToByteEncoder;
  */
 public class CmdEncoder extends MessageToByteEncoder<Cmd> {
 
-    //输出
+    //out
     @Override
     protected void encode(ChannelHandlerContext ctx, Cmd msg, ByteBuf out) {
         msg.encoderTo(out);
