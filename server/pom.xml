@@ -12,7 +12,10 @@
     <name>server</name>
 
     <dependencies>
-
+        <dependency>
+            <groupId>com.lujango</groupId>
+            <artifactId>common</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
