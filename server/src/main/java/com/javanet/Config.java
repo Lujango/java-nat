@@ -17,16 +17,18 @@ import java.util.List;
  * config class
  */
 public class Config {
+
     private static Logger log = LoggerFactory.getLogger(Config.class);
+    public static String bindHost = "0.0.0.0";
     public static int bindPort;
     public static String token;
-    //time out
+    //等待客户端数据连接的超时时间
     public static int timeOut = 5;
 
     private static List<ServerInfo> serverInfos = new ArrayList<>();
 
     public static void init(String configPath) throws IOException {
-        log.info("read config");
+        log.info("准备读取配置文件");
         ObjectMapper mapper = new ObjectMapper();
         InputStream input = getResource(configPath);
         JsonNode config = mapper.readTree(input);
@@ -38,6 +40,16 @@ public class Config {
             serverInfos.add(serverInfo);
         }
     }
+
+    public static ServerInfo getServerInfo(String clientName) {
+        for (ServerInfo serverInfo : serverInfos) {
+            if (clientName.equals(serverInfo.getClientName())) {
+                return serverInfo;
+            }
+        }
+        return null;
+    }
+
 
     private static InputStream getResource(String resourceName) {
         if (resourceName == null) {
@@ -53,4 +65,5 @@ public class Config {
             return null;
         }
     }
+
 }
