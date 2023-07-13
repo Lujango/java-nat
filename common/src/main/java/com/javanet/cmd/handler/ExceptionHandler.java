@@ -25,10 +25,10 @@ public class ExceptionHandler extends ChannelInboundHandlerAdapter {
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
         Channel channel = ctx.channel();
         if ("Connection reset by peer".equals(cause.getMessage())) {
-            log.error("收尾:Connection reset by peer local:{},remote:{}", channel.localAddress(), channel.remoteAddress());
+            log.error("end:Connection reset by peer local:{},remote:{}", channel.localAddress(), channel.remoteAddress());
             return;
         }
-        log.error("收尾local:" + channel.localAddress() + " remote" + channel.remoteAddress(), cause);
+        log.error("end local:" + channel.localAddress() + " remote" + channel.remoteAddress(), cause);
         ctx.close();
     }
 }
